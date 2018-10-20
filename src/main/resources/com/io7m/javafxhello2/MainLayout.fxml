@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.io7m.javafxhello2.MainController">
+  <children>
+    <MenuBar prefHeight="32.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <menus>
+        <Menu id="menu_main" mnemonicParsing="false">
+          <items>
+            <MenuItem disable="true" mnemonicParsing="false" onAction="#onMenuSelected" text="About…" />
+          </items>
+          <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@bundle.png" />
+              </image>
+            </ImageView>
+          </graphic>
+        </Menu>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#onMenuQuit" text="Quit">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+              </accelerator>
+            </MenuItem>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem disable="true" mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem disable="true" mnemonicParsing="false" text="About" />
+            <MenuItem mnemonicParsing="false" onAction="#onMenuError" text="Error" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane layoutX="6.0" layoutY="200.0" prefHeight="32.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <children>
+        <Separator prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label fx:id="statusLabel" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0" />
+        <ImageView fx:id="statusImage" fitHeight="16.0" fitWidth="16.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0" />
+      </children>
+    </AnchorPane>
+    <AnchorPane layoutX="14.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" styleClass="sidebar" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <children>
+        <RadioButton contentDisplay="TEXT_ONLY" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#onCatalogSelected" prefHeight="32.0" selected="true" styleClass="sidebar_button" text="Catalog" toggleGroup="$sidebarGroup" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+          <toggleGroup>
+            <ToggleGroup fx:id="sidebarGroup" />
+          </toggleGroup>
+        </RadioButton>
+        <RadioButton contentDisplay="TEXT_ONLY" layoutY="64.0" mnemonicParsing="false" onAction="#onInventorySelected" prefHeight="32.0" styleClass="sidebar_button" text="Inventory" toggleGroup="$sidebarGroup" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <RadioButton contentDisplay="TEXT_ONLY" layoutY="96.0" mnemonicParsing="false" onAction="#onSettingsSelected" prefHeight="32.0" styleClass="sidebar_button" text="Settings" toggleGroup="$sidebarGroup" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      </children>
+    </AnchorPane>
+    <AnchorPane layoutX="200.0" layoutY="32.0" prefHeight="336.0" prefWidth="397.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <children>
+        <AnchorPane fx:id="inventoryPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Inventory" textFill="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+              <font>
+                <Font size="24.0" />
+              </font>
+            </Label>
+          </children>
+        </AnchorPane>
+        <AnchorPane fx:id="settingsPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <TextField layoutX="59.0" layoutY="16.0" prefHeight="32.0" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="16.0" />
+            <Label layoutX="14.0" layoutY="21.0" prefHeight="32.0" text="Label" textFill="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0" />
+            <Label layoutX="16.0" layoutY="64.0" prefHeight="32.0" text="Label" textFill="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="64.0" />
+            <TextField layoutX="64.0" layoutY="64.0" prefHeight="32.0" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="64.0" />
+          </children>
+        </AnchorPane>
+        <AnchorPane fx:id="catalogPane" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <TableView layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="64.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <Label layoutX="16.0" layoutY="14.0" text="Catalog" textFill="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+              <font>
+                <Font size="24.0" />
+              </font>
+            </Label>
+          </children>
+        </AnchorPane>
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>

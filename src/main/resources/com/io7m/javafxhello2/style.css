@@ -1,0 +1,51 @@
+.tab *.tab-label
+{
+  -fx-rotate: 90;
+}
+
+.tab
+{
+  -fx-padding: 3em 0.5em 3em 0.5em;
+}
+
+#menu_main {
+  -fx-graphic: url(bundle.png);
+}
+
+#catalogPane {
+  -fx-background-color: #113f4f;
+}
+
+#inventoryPane {
+  -fx-background-color: #113f4f;
+}
+
+#settingsPane {
+  -fx-background-color: #113f4f;
+}
+
+.sidebar {
+  -fx-background-color: #225668;
+}
+
+.sidebar_button
+{
+  -fx-background-radius: 0;
+  -fx-background-color: #225668;
+  -fx-text-fill: #ffffff;
+}
+
+.sidebar_button:selected
+{
+  -fx-background-color: #113f4f;
+  -fx-text-fill: #ffffff;
+}
+
+.sidebar_button .dot
+{
+  visibility: hidden;
+}
+.sidebar_button .radio
+{
+  visibility: hidden;
+}
