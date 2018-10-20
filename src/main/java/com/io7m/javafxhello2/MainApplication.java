@@ -1,6 +1,5 @@
 package com.io7m.javafxhello2;
 
-import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

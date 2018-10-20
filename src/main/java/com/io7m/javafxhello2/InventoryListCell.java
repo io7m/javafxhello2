@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +47,7 @@ public final class InventoryListCell extends ListCell<Download>
       this.setGraphic(null);
     } else {
       if (this.loader == null) {
-        this.loader = new FXMLLoader(this.getClass().getResource("InventoryListView.fxml"));
+        this.loader = new FXMLLoader(InventoryListCell.class.getResource("InventoryListView.fxml"));
         this.loader.setController(this);
 
         try {
@@ -58,6 +60,8 @@ public final class InventoryListCell extends ListCell<Download>
       this.fileName.setText(item.file_name);
       this.progress.setProgress(item.progress);
       this.status.setText(item.status);
+      this.stopOrResume.setGraphic(
+        new ImageView(new Image(InventoryListCell.class.getResource("dialog-error.png").toString())));
       this.stopOrResume.setOnAction(event -> LOG.debug("cancel {}", Integer.valueOf(item.id)));
 
       this.setText(null);
