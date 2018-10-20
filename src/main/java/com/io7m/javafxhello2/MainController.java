@@ -3,8 +3,11 @@ package com.io7m.javafxhello2;
 import io.reactivex.Observable;
 import io.reactivex.subjects.Subject;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,9 +15,11 @@ import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public final class MainController
+public final class MainController implements Initializable
 {
   private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
 
@@ -36,17 +41,14 @@ public final class MainController
   @FXML
   private Label statusLabel;
 
+  @FXML
+  private ListView<Download> inventoryDownloads;
+
   private Subject<EventType> subject;
 
   public MainController()
   {
 
-  }
-
-  @FXML
-  public void initialize()
-  {
-    LOG.debug("initialize");
   }
 
   public void onMenuSelected()
@@ -120,5 +122,21 @@ public final class MainController
 
 
     this.statusLabel.setText(event.describe());
+  }
+
+  @Override
+  public void initialize(
+    final URL location,
+    final ResourceBundle resources)
+  {
+    LOG.debug("initialize");
+
+    final var items = FXCollections.<Download>observableArrayList();
+    for (int index = 0; index < 30; ++index) {
+      items.add(new Download(index,"output.txt", "100/1000, 2mb/s, 00:01:32 remaining", 0.23));
+    }
+
+    this.inventoryDownloads.setCellFactory(new InventoryListCellFactory());
+    this.inventoryDownloads.setItems(items);
   }
 }
